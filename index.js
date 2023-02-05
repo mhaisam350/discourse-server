@@ -26,7 +26,6 @@ const io = new Server(server, {
     cors: {
         origin: 'https://discourse-chat-59782d.netlify.app',
     },
-    wsEngine: require('eiows').Server,
 });
 
 const automatedSender = 'Discourse';
