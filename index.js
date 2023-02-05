@@ -12,15 +12,6 @@ const app = express();
 app.use(helmet());
 app.use(cors());
 
-// app.options('*', (req, res) => {
-//     res.set('Access-Control-Allow-Origin', '*');
-//     res.send('ok');
-//   });
-  
-//   app.use((req, res) => {
-//     res.set('Access-Control-Allow-Origin', '*');
-//   });
-
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
@@ -40,12 +31,10 @@ const PORT = process.env.PORT;
 
 io.on('connection', (socket) => {
 
-    // console.log(socket.id);
 
     socket.on('joinRoom', ({ username, room, color }) => {
 
         const user = userJoin(socket.id, username, room, color);
-        // console.log(user);
 
         socket.join(user.room);
 
