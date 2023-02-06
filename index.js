@@ -46,11 +46,11 @@ io.on('connection', (socket) => {
 
     });
 
-    socket.on('chatMessage', message => {
+    socket.on('chatMessage', ({ message, time }) => {
 
         const user = getCurrentUser(socket.id);
 
-        io.to(user.room).emit('message', formatMessage(user.username, message, user.color));
+        io.to(user.room).emit('message', formatMessage(user.username, message, user.color, time));
 
     });
 
